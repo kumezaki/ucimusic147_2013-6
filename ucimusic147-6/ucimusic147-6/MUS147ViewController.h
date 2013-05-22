@@ -7,20 +7,91 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MUS147Sequencer.h"
+@interface MUS147ViewController : UIViewController
+{
+//    IBOutlet UISlider* freq0Slider;
+//    IBOutlet UISlider* amp0Slider;
+//    //IBOutlet UIButton* play0MiddleC;
+//    IBOutlet UISlider* freq1Slider;
+//    IBOutlet UISlider* amp1Slider;
+//    __unsafe_unretained IBOutlet UISlider *freq2Slider;
+//    __unsafe_unretained IBOutlet UISlider *amp2Slider;
 
-@interface MUS147ViewController : UIViewController {
-
-    // member variables here
-    IBOutlet UISlider* freq0Slider;
-    IBOutlet UISlider* amp0Slider;
-    IBOutlet UISlider* freq1Slider;
-    IBOutlet UISlider* amp1Slider;
+    IBOutlet UIButton *cMajorButton;
+    IBOutlet UIButton *dMinorButton;
+    IBOutlet UIButton *eMinorButton;
+    IBOutlet UIButton *fMajorButton;
+    IBOutlet UIButton *gMajoButton;
+    IBOutlet UIButton *aMinorButton;
+    IBOutlet UIButton *bFlatMajorButton;
+    IBOutlet UIButton *bDimButton;
+        
+    IBOutlet UISlider *masterVolSlider;
+    
+    MUS147Sequencer* seqer;
+    BOOL    playing;
+//    IBOutlet UIButton *stopButton;
+    
 }
 
-// methods here
--(IBAction)setFreq0:(id)sender;
--(IBAction)setAmp0:(id)sender;
--(IBAction)setFreq1:(id)sender;
--(IBAction)setAmp1:(id)sender;
+@property (readwrite) UInt32 midiNum;
+@property (readwrite) BOOL    playing;
+
+
+
+    //UI items for the first note
+//    -(IBAction)setFreq0:(id)sender;
+//    -(IBAction)setAmp0:(id)sender;
+    //-(IBAction)setFreqC0:(id)sender;
+
+    //UI items for the second note
+//    -(IBAction)setFreq1:(id)sender;
+//    -(IBAction)setAmp1:(id)sender;
+
+    //UI items for the third note
+//    -(IBAction)setFreq2:(id)sender;
+//    -(IBAction)setAmp2:(id)sender;
+
+//UI buttons for making chord sounds
+
+- (void)setAmpZero;
+- (void)resetFreq;
+- (void)setAmpMasterVolValue;
+
+- (IBAction)setCMajor:(id)sender;
+- (IBAction)cMajorStop:(id)sender;
+
+- (IBAction)setDMinor:(id)sender;
+- (IBAction)stopDMinor:(id)sender;
+
+- (IBAction)setEMinor:(id)sender;
+- (IBAction)stopEMinor:(id)sender;
+
+- (IBAction)setFMajor:(id)sender;
+- (IBAction)stopFMajor:(id)sender;
+
+- (IBAction)setGMajor:(id)sender;
+- (IBAction)stopGMajor:(id)sender;
+
+- (IBAction)setAMinor:(id)sender;
+- (IBAction)stopAMinor:(id)sender;
+
+- (IBAction)setBFlatMajor:(id)sender;
+- (IBAction)stopBFlatMajor:(id)sender;
+
+- (IBAction)setBDim:(id)sender;
+- (IBAction)stopBDim:(id)sender;
+
+
+
+-(IBAction)masterVolSlider:(id)sender;
+//-(IBAction)zeroAmp:(id)sender;
+
+//- (IBAction)seqPlay:(id)sender;
+//- (IBAction)seqStop:(id)sender;
+- (IBAction)seqRewind:(id)sender;
+
+- (IBAction)loop1Switch:(id)sender;
 
 @end

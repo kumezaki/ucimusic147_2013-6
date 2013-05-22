@@ -8,10 +8,12 @@
 
 #import "MUS147AQPlayer.h"
 
-#import "MUS147Voice_Sample.h"
-#import "MUS147Voice_Synth.h"
+#import "MUS147Sequencer.h"
+
+#import "MUS147Chord.h"
 
 MUS147AQPlayer *aqp = nil;
+MUS147Chord* chrd = nil;
 
 void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inAQBuffer);
 
@@ -39,9 +41,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     
 	// queue the updated AudioQueueBuffer
 	AudioQueueEnqueueBuffer(inAQ, inAQBuffer, 0, nil);
+    
+    [aqp reportElapsedFrames:numFrames];
+    
 }
 
 @implementation MUS147AQPlayer
+
+@synthesize sequencer;
 
 - (void)dealloc {
 
@@ -53,13 +60,16 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
     self = [super init];
     
 	aqp = self;
-    
+	
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        voice[i] = [[MUS147Voice_Synth alloc] init];
-    }
-	
-	[self start];
+        voice[i] = [[MUS147Voice alloc]init];
+   	}
+    
+    sequencer = [[MUS147Sequencer alloc] init];
+    chrd = [[MUS147Chord alloc]init];
+
+    [self start];
     
 	return self;
 }
@@ -80,7 +90,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 	if (result != noErr)
 		NSLog(@"AudioQueueNewOutput %ld\n",result);
 	
-    for (SInt32 i = 0; i < kNumBuffers; i++)
+    for (SInt32 i = 0; i < kNumberBuffers; i++)
 	{
 		result = AudioQueueAllocateBuffer(queue, 512, &buffers[i]);
 		if (result != noErr)
@@ -97,7 +107,7 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
         [self setup];
     
     // prime the queue with some data before starting
-    for (SInt32 i = 0; i < kNumBuffers; ++i)
+    for (SInt32 i = 0; i < kNumberBuffers; ++i)
         MUS147AQBufferCallback(nil, queue, buffers[i]);
 	
     result = AudioQueueStart(queue, nil);
@@ -117,13 +127,26 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 -(MUS147Voice*)getVoice:(UInt8)pos
 {
     return voice[pos];
+    
 }
+-(MUS147Voice*)getSynthVoice
+{
+    return voice[2+synthVoice];
+}
+
+-(void)reportElapsedFrames:(UInt32)num_frames
+{
+    [sequencer advanceScoreTime:num_frames/kSR];
+    
+//    NSLog(@"%f",num_frames/kSR);
+}
+
 
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
-        [voice[i] fillAudioBuffer:buffer:num_samples];
+    [voice[i] fillAudioBuffer:buffer :num_samples];
     }
 }
 

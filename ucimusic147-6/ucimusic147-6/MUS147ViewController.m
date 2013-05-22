@@ -9,13 +9,17 @@
 #import "MUS147ViewController.h"
 
 #import "MUS147AQPlayer.h"
+#import "MUS147Chord.h"
+
 extern MUS147AQPlayer* aqp;
+extern MUS147Chord* chrd;
 
 @interface MUS147ViewController ()
 
 @end
 
 @implementation MUS147ViewController
+@synthesize playing;
 
 - (void)viewDidLoad
 {
@@ -29,26 +33,177 @@ extern MUS147AQPlayer* aqp;
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)setFreq0:(id)sender
+
+- (IBAction)masterVolSlider:(id)sender
 {
-//    [aqp getVoice:0].freq = freq0Slider.value * 1000.;
-    [aqp getVoice:0].speed = freq0Slider.value * 2.;
+    for (UInt32 i = 0; i < chrd.numVoices; i++){
+    [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
+    }
+
 }
 
--(IBAction)setAmp0:(id)sender
-{
-    [aqp getVoice:0].amp = amp0Slider.value;
+- (void)viewDidUnload {
+    cMajorButton = nil;
+    aMinorButton = nil;
+    masterVolSlider = nil;
+    fMajorButton = nil;
+    dMinorButton = nil;
+    gMajoButton = nil;
+    eMinorButton = nil;
+    eMinorButton = nil;
+    bFlatMajorButton = nil;
+    bDimButton = nil;
+    playing = NO;
+    [super viewDidUnload];
 }
 
--(IBAction)setFreq1:(id)sender
+
+
+- (void)setAmpMasterVolValue
 {
-//    [aqp getVoice:1].freq = freq1Slider.value * 1000.;
-    [aqp getVoice:1].speed = freq1Slider.value * 2.;
+    for (UInt32 i = 0; i < chrd.numVoices; i++)
+    {
+        [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
+    }
 }
 
--(IBAction)setAmp1:(id)sender
+
+
+-(IBAction)setCMajor:(id)sender
 {
-    [aqp getVoice:1].amp = amp1Slider.value;
+    [chrd cMajorPlay];
+    [self setAmpMasterVolValue];
 }
+
+- (IBAction)cMajorStop:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setDMinor:(id)sender
+{
+    [chrd dMinorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopDMinor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setEMinor:(id)sender
+{
+    [chrd eMinorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopEMinor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setFMajor:(id)sender
+{
+    [chrd fMajorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopFMajor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setGMajor:(id)sender
+{
+    [chrd gMajorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopGMajor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setAMinor:(id)sender
+{
+    [chrd aMinorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopAMinor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setBFlatMajor:(id)sender
+{
+    [chrd bFlatMajorPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopBFlatMajor:(id)sender
+{
+    [chrd resetSound];
+}
+
+- (IBAction)setBDim:(id)sender
+{
+    [chrd bDimPlay];
+    [self setAmpMasterVolValue];
+}
+
+- (IBAction)stopBDim:(id)sender
+{
+    [chrd resetSound];
+}
+
+
+
+
+//-(IBAction)zeroAmp:(id)sender
+//{
+//    if ([aqp getVoice:0 > 0.])
+//    {
+//        [self resetSound];
+//    }
+//    else
+//    {
+//        [self setAmpMasterVolValue];
+//    }
+//
+//
+//}
+
+//- (IBAction)seqPlay:(id)sender
+//{
+//    [aqp.sequencer play];
+//}
+//
+//- (IBAction)seqStop:(id)sender
+//{
+//    [aqp.sequencer stop];
+//}
+
+- (IBAction)seqRewind:(id)sender
+{
+    [aqp.sequencer rewind];
+}
+
+- (IBAction)loop1Switch:(id)sender
+{
+    if (!playing)
+    {
+        [aqp.sequencer play];
+        playing = YES;
+    }
+    else{
+        [aqp.sequencer stop];
+        playing = NO;
+    }
+}
+
+
+
+
 
 @end

@@ -20,5 +20,6 @@
 
 -(id)init;
 -(MUS147Event*)getEvent:(UInt32)pos;
+-(void)addEvent:(MUS147Event*)event;
 
 @end

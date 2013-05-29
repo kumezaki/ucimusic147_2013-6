@@ -8,18 +8,13 @@
 
 #import "MUS147Chord.h"
 #import "MUS147AQPlayer.h"
-#import "MUS147ViewController.h"
+#import "MUS147Event_Note.h"
 
 extern MUS147AQPlayer* aqp;
-extern MUS147Chord* chrd;
-extern MUS147ViewController* viewcon;
 
 @implementation MUS147Chord
 
 @synthesize numVoices;
-@synthesize noteNum;
-@synthesize freqNoteNum;
-@synthesize value;
 
 - (void)setAmpMax
 {
@@ -48,106 +43,107 @@ extern MUS147ViewController* viewcon;
     }
 }
 
--(void)freqGetNoteNum
-{
-    for (UInt32 i = 0; i < numVoices; i++){
-    freqNoteNum = pow(2., ((Float64)noteNum - 69)/12.)*440;
-    }
-}
 
 
 
 
 -(void)cMajorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)60 - 69)/12.)*440;
-    [aqp getVoice:1].freq = (pow(2., ((Float64)60 - 69)/12.)*440)*2.;
-    [aqp getVoice:2].freq = pow(2., ((Float64)64 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)64 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = pow(2., ((Float64)67 - 69)/12.)*440;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)67 - 69)/12.)*440) * 2.;;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:60];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:60] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:64];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:64] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:67];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:67] * 2.;
+    
     self.numVoices = 6;
 }
 
 
 -(void)dMinorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)62 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)65 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)69 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)62 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)65 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)69 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:62];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:62] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:65];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:65] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:69];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:69] * 2.;
+
     self.numVoices = 6;
 }
 
 -(void)eMinorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)64 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)67 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)71 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)64 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)67 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)71 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:64];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:64] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:67];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:67] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:71];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:71] * 2.;
+
     self.numVoices = 6;
 }
 
 
 -(void)fMajorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)65 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)69 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)72 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)65 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)69 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)72 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:65];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:65] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:69];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:69] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:72];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:72] * 2.;
+
     self.numVoices = 6;
 }
 
 
 -(void)gMajorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)67 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)71 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)74 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)67 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)71 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)74 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:67];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:67] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:71];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:71] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:74];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:74] * 2.;
+
     self.numVoices = 6;
 }
 
 -(void)aMinorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)69 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)72 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)76 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)69 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)72 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)76 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:69];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:69] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:72];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:72] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:76];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:76] * 2.;
+
     self.numVoices = 6;
 }
 
 
 -(void)bFlatMajorPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)70 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)74 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)77 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)70 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)74 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)77 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:70];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:70] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:74];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:74] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:77];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:77] * 2.;
+
     self.numVoices = 6;
 }
 
 
 -(void)bDimPlay
 {
-    [aqp getVoice:0].freq = pow(2., ((Float64)71 - 69)/12.)*440;
-    [aqp getVoice:1].freq = pow(2., ((Float64)74 - 69)/12.)*440;
-    [aqp getVoice:2].freq = pow(2., ((Float64)77 - 69)/12.)*440;
-    [aqp getVoice:3].freq = (pow(2., ((Float64)71 - 69)/12.)*440) * 2.;
-    [aqp getVoice:4].freq = (pow(2., ((Float64)74 - 69)/12.)*440) * 2.;
-    [aqp getVoice:5].freq = (pow(2., ((Float64)77 - 69)/12.)*440) * 2.;
+    [aqp getVoice:0].freq = [MUS147Event_Note noteNumToFreq:71];
+    [aqp getVoice:1].freq = [MUS147Event_Note noteNumToFreq:71] * 2.;
+    [aqp getVoice:2].freq = [MUS147Event_Note noteNumToFreq:74];
+    [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:74] * 2.;
+    [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:77];
+    [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:77] * 2.;
 
     self.numVoices = 6;
 }

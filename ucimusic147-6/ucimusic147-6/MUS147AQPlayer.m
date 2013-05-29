@@ -142,12 +142,14 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 }
 
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
+-(void)fillAudioBuffer:(Float64*)buffer :(UInt32)num_samples
 {
     for (UInt8 i = 0; i < kNumVoices; i++)
     {
     [voice[i] fillAudioBuffer:buffer :num_samples];
     }
 }
+
+
 
 @end

@@ -28,6 +28,11 @@
 		C1878CBB174D904C00A03642 /* MUS147Voice.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CB6174D904C00A03642 /* MUS147Voice.m */; };
 		C1878CBC174D904C00A03642 /* MUS147AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CB8174D904C00A03642 /* MUS147AppDelegate.m */; };
 		C1878CC0174D90E100A03642 /* MUS147ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1878CBF174D90E100A03642 /* MUS147ViewController.xib */; };
+		C1878CC3174FF98C00A03642 /* MUS147Event_Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CC2174FF98C00A03642 /* MUS147Event_Note.m */; };
+		C1878CC51755490900A03642 /* MUS147AQRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CC41755490900A03642 /* MUS147AQRecorder.m */; };
+		C1878CCA1755497E00A03642 /* MUS147Voice_Sample_Mem.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CC91755497E00A03642 /* MUS147Voice_Sample_Mem.m */; };
+		C1878CD0175549F400A03642 /* MUS147Voice_Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CCF175549F300A03642 /* MUS147Voice_Sample.m */; };
+		C1878CDC17555A8A00A03642 /* MUS147Event_Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = C1878CDB17555A8800A03642 /* MUS147Event_Touch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +70,17 @@
 		C1878CB7174D904C00A03642 /* MUS147AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AppDelegate.h; sourceTree = "<group>"; };
 		C1878CB8174D904C00A03642 /* MUS147AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AppDelegate.m; sourceTree = "<group>"; };
 		C1878CBF174D90E100A03642 /* MUS147ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MUS147ViewController.xib; sourceTree = "<group>"; };
+		C1878CC1174FF98C00A03642 /* MUS147Event_Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Event_Note.h; sourceTree = "<group>"; };
+		C1878CC2174FF98C00A03642 /* MUS147Event_Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Event_Note.m; sourceTree = "<group>"; };
+		C1878CC41755490900A03642 /* MUS147AQRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147AQRecorder.m; sourceTree = "<group>"; };
+		C1878CC61755492A00A03642 /* MUS147AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQRecorder.h; sourceTree = "<group>"; };
+		C1878CC71755492A00A03642 /* MUS147AQShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147AQShared.h; sourceTree = "<group>"; };
+		C1878CC81755497E00A03642 /* MUS147Voice_Sample_Mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Sample_Mem.h; sourceTree = "<group>"; };
+		C1878CC91755497E00A03642 /* MUS147Voice_Sample_Mem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample_Mem.m; sourceTree = "<group>"; };
+		C1878CCE175549F300A03642 /* MUS147Voice_Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Voice_Sample.h; sourceTree = "<group>"; };
+		C1878CCF175549F300A03642 /* MUS147Voice_Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Voice_Sample.m; sourceTree = "<group>"; };
+		C1878CDA17555A8700A03642 /* MUS147Event_Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUS147Event_Touch.h; sourceTree = "<group>"; };
+		C1878CDB17555A8800A03642 /* MUS147Event_Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUS147Event_Touch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,27 +129,38 @@
 		21A4B90C172C284E00E1FACA /* ucimusic147-6 */ = {
 			isa = PBXGroup;
 			children = (
-				C1878CBF174D90E100A03642 /* MUS147ViewController.xib */,
-				C1878CB1174D904C00A03642 /* MUS147ViewController.h */,
-				C1878CB2174D904C00A03642 /* MUS147ViewController.m */,
-				C1878CB3174D904C00A03642 /* MUS147AQPlayer.m */,
-				C1878CB4174D904C00A03642 /* MUS147AQPlayer.h */,
-				C1878CB5174D904C00A03642 /* MUS147Voice.h */,
-				C1878CB6174D904C00A03642 /* MUS147Voice.m */,
 				C1878CB7174D904C00A03642 /* MUS147AppDelegate.h */,
 				C1878CB8174D904C00A03642 /* MUS147AppDelegate.m */,
+				C1878CB4174D904C00A03642 /* MUS147AQPlayer.h */,
+				C1878CB3174D904C00A03642 /* MUS147AQPlayer.m */,
+				C1878CC61755492A00A03642 /* MUS147AQRecorder.h */,
+				C1878CC41755490900A03642 /* MUS147AQRecorder.m */,
+				C1878CC71755492A00A03642 /* MUS147AQShared.h */,
+				C1878C9F174D8FC100A03642 /* MUS147Chord.h */,
+				C1878CA0174D8FC100A03642 /* MUS147Chord.m */,
 				C1878CA2174D8FCE00A03642 /* MUS147cMajorView.h */,
 				C1878CA3174D8FCE00A03642 /* MUS147cMajorView.m */,
 				C1878CA4174D8FCE00A03642 /* MUS147Event.h */,
 				C1878CA5174D8FCE00A03642 /* MUS147Event.m */,
-				C1878C9F174D8FC100A03642 /* MUS147Chord.h */,
-				C1878CA0174D8FC100A03642 /* MUS147Chord.m */,
+				C1878CC1174FF98C00A03642 /* MUS147Event_Note.h */,
+				C1878CC2174FF98C00A03642 /* MUS147Event_Note.m */,
+				C1878CDA17555A8700A03642 /* MUS147Event_Touch.h */,
+				C1878CDB17555A8800A03642 /* MUS147Event_Touch.m */,
 				C1878CA8174D8FDC00A03642 /* MUS147Sequence.h */,
 				C1878CA9174D8FDC00A03642 /* MUS147Sequence.m */,
 				C1878CAA174D8FDC00A03642 /* MUS147Sequencer.h */,
 				C1878CAB174D8FDC00A03642 /* MUS147Sequencer.m */,
+				C1878CB1174D904C00A03642 /* MUS147ViewController.h */,
+				C1878CB2174D904C00A03642 /* MUS147ViewController.m */,
+				C1878CBF174D90E100A03642 /* MUS147ViewController.xib */,
+				C1878CB5174D904C00A03642 /* MUS147Voice.h */,
+				C1878CB6174D904C00A03642 /* MUS147Voice.m */,
 				C1878CAC174D8FDC00A03642 /* MUS147Voice_Limitter.h */,
 				C1878CAD174D8FDC00A03642 /* MUS147Voice_Limitter.m */,
+				C1878CCE175549F300A03642 /* MUS147Voice_Sample.h */,
+				C1878CCF175549F300A03642 /* MUS147Voice_Sample.m */,
+				C1878CC81755497E00A03642 /* MUS147Voice_Sample_Mem.h */,
+				C1878CC91755497E00A03642 /* MUS147Voice_Sample_Mem.m */,
 				21A4B90D172C284E00E1FACA /* Supporting Files */,
 			);
 			path = "ucimusic147-6";
@@ -233,6 +260,11 @@
 				C1878CBA174D904C00A03642 /* MUS147AQPlayer.m in Sources */,
 				C1878CBB174D904C00A03642 /* MUS147Voice.m in Sources */,
 				C1878CBC174D904C00A03642 /* MUS147AppDelegate.m in Sources */,
+				C1878CC3174FF98C00A03642 /* MUS147Event_Note.m in Sources */,
+				C1878CC51755490900A03642 /* MUS147AQRecorder.m in Sources */,
+				C1878CCA1755497E00A03642 /* MUS147Voice_Sample_Mem.m in Sources */,
+				C1878CD0175549F400A03642 /* MUS147Voice_Sample.m in Sources */,
+				C1878CDC17555A8A00A03642 /* MUS147Event_Touch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

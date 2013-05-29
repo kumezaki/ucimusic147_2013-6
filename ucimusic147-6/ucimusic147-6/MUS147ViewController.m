@@ -19,6 +19,7 @@ extern MUS147Chord* chrd;
 @end
 
 @implementation MUS147ViewController
+
 @synthesize playing;
 
 - (void)viewDidLoad
@@ -158,6 +159,12 @@ extern MUS147Chord* chrd;
 }
 
 
+- (IBAction)seqRec:(id)sender;
+{
+    
+    [aqp.sequencer record];
+}
+
 
 
 //-(IBAction)zeroAmp:(id)sender
@@ -196,7 +203,8 @@ extern MUS147Chord* chrd;
         [aqp.sequencer play];
         playing = YES;
     }
-    else{
+    else
+    {
         [aqp.sequencer stop];
         playing = NO;
     }

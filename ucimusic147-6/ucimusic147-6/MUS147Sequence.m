@@ -38,4 +38,10 @@
     return events[pos];
 }
 
+-(void)addEvent:(MUS147Event*)event
+{
+    events[numEvents++] = event;
+}
+
+
 @end

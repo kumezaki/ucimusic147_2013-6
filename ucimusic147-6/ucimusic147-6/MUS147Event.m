@@ -9,6 +9,7 @@
 #import "MUS147Event.h"
 #import "MUS147AQPlayer.h"
 #import "MUS147Chord.h"
+#import "MUS147Event_Note.h"
 
 extern MUS147AQPlayer* aqp;
 extern MUS147Chord* chrd;
@@ -25,9 +26,10 @@ extern MUS147Chord* chrd;
     chrd = [[MUS147Chord alloc]init];
     chrd.numVoices = 1;
     voice = [aqp getVoice:0];
-    voice.freq = pow(2., ((Float64)noteNum - 69)/12.)*440;
+    voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
+//    voice.amp = masterVolSlider.value/chrd.numVoices;
+    voice.amp = 1/ chrd.numVoices;
     on = YES;
-    [chrd setAmpMasterVolSlider];
 }
 
 -(void)doOff

@@ -14,12 +14,15 @@
     Float64 normPhase;
     Float64 freq;
     Float64 amp;
+    Float64 speed;
     UInt32  midiNum;
 }
 
 @property (readwrite) Float64 freq;
 @property (readwrite) Float64 amp;
+@property (readwrite) Float64 speed;
 
--(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples;
+
+-(void)fillAudioBuffer:(Float64*)buffer :(UInt32)num_samples;
 
 @end

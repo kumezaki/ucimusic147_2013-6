@@ -12,23 +12,17 @@
 #define kNumMaxVoices 100
 @interface MUS147Chord : NSObject
 {
-    UInt32 numVoices;    
-    Float32 freqNoteNum;
-    Float32 value;
+    UInt32 numVoices;
 }
 
 @property (readwrite, assign) UInt32    numVoices;
-@property (readwrite) Float32           noteNumFreq;
-@property (readwrite) UInt32            noteNum;
-@property (readwrite) Float32           freqNoteNum;
-@property (readwrite) Float32           value;
+
+
 
 - (void)setAmpMax;
 -(void)setAmpMasterVolSlider;
 
 - (void)resetSound;
-
--(void)freqGetNoteNum;
 
 -(void)cMajorPlay;
 -(void)cMajorStop;

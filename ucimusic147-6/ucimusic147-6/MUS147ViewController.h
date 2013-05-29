@@ -83,7 +83,7 @@
 - (IBAction)setBDim:(id)sender;
 - (IBAction)stopBDim:(id)sender;
 
-
+- (IBAction)seqRec:(id)sender;
 
 -(IBAction)masterVolSlider:(id)sender;
 //-(IBAction)zeroAmp:(id)sender;

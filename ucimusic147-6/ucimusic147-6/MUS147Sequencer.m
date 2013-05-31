@@ -8,6 +8,7 @@
 
 #import "MUS147Sequencer.h"
 #import "MUS147Event_Touch.h"
+#import "MUS147Event_Note.h"
 
 @implementation MUS147Sequencer
 @synthesize scoreTime;
@@ -16,6 +17,8 @@
 @synthesize recording;
 
 @synthesize loopLength;
+
+
 -(id)init
 {
     self = [super init];
@@ -25,6 +28,11 @@
     loopLength = 4.;
     bpm = 120.;
     playing = NO;
+
+    for (UInt32 i = 0; i < 128; i++) {
+        noteOn[i] = -1;
+    }
+    
     return self;
 }
 
@@ -64,15 +72,16 @@
     }
 }
 
--(void)countIn
-{
-    for (UInt32 i = 0; i < 4; i++)
-    {
-        
-    }
-
-    
-}
+//-(void)countIn
+//{
+//    for (UInt32 i = 2; i <= 5; i++)
+//    {
+//        MUS147Event* event = [seq getEvent:i];
+//        [event doOn];
+//    }
+//
+//    
+//}
 
 
 -(void)play
@@ -82,7 +91,7 @@
 
 -(void)record
 {
-    //count in
+    //need count-in
     
     playing = NO;
     recording = YES;
@@ -116,6 +125,46 @@
         if (event.on)
             [event doOff];
     }
+}
+
+-(void)addChordEvent:(UInt32)note1 :(UInt32)note2 :(UInt32)note3 :(BOOL)on
+{
+    if (!recording) return;
+   
+    if (seq.numEvents > 0)
+    {
+        MUS147Event* prev_e = [seq getEvent:(seq.numEvents-1)];
+        prev_e.duration = scoreTime - prev_e.startTime;
+        
+        //      NSLog(@"%f %f %f %s PREV(%f,%f)",scoreTime,x,y,on?"YES":"NO",prev_e.startTime,prev_e.duration);
+    }
+    noteOn[note1] = scoreTime;
+    noteOn[note2] = scoreTime;
+    noteOn[note3] = scoreTime;
+    MUS147Event_Touch* e = [[MUS147Event_Touch alloc] init];
+    e.startTime = noteOn[note1];
+    e.duration = MAXFLOAT;
+    e.startTime = scoreTime;
+    e.noteNum = note1;
+    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    
+    [seq addEvent:e];
+    
+    e.startTime = noteOn[note1];
+    e.duration = MAXFLOAT;
+    e.startTime = scoreTime;
+    e.noteNum = note2;
+    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    
+    [seq addEvent:e];
+    
+    e.startTime = noteOn[note1];
+    e.duration = MAXFLOAT;
+    e.startTime = scoreTime;
+    e.noteNum = note3;
+    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
+    
+    [seq addEvent:e];
 }
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on

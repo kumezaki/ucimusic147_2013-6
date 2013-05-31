@@ -12,12 +12,14 @@
 {    
     Float64 startTime;
     Float64 duration;
+    Float64 touchDuration;
     SInt16 noteNum;
     BOOL on;
     MUS147Voice* voice;
 }
 @property (readwrite) Float64 startTime;
 @property (readwrite) Float64 duration;
+@property (readwrite) Float64 touchDuration;
 @property (readwrite) SInt16 noteNum;
 @property (readwrite) BOOL on;
 

@@ -18,6 +18,7 @@ extern MUS147Chord* chrd;
 
 @synthesize startTime;
 @synthesize duration;
+@synthesize touchDuration;
 @synthesize noteNum;
 @synthesize on;
 

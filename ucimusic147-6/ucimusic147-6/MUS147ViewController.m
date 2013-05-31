@@ -165,6 +165,11 @@ extern MUS147Chord* chrd;
     [aqp.sequencer record];
 }
 
+- (IBAction)seqStop:(id)sender
+{
+    [aqp.sequencer stop];
+}
+
 
 
 //-(IBAction)zeroAmp:(id)sender

@@ -48,5 +48,9 @@
 -(void)bDimPlay;
 -(void)bDimStop;
 
+- (UInt32)get1NoteInChord;
+- (UInt32)get2NoteInChord;
+- (UInt32)get3NoteInChord;
+
 
 @end

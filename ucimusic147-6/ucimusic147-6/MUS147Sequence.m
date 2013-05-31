@@ -26,6 +26,27 @@
     events[1].startTime = 1.5;
     events[1].duration = 0.5;
     events[1].noteNum = 65;
+   
+    //count in
+//    events[2] = [[MUS147Event alloc] init];
+//    events[2].startTime = 0.;
+//    events[2].duration = 0.2;
+//    events[2].noteNum = 60;
+//    
+//    events[3] = [[MUS147Event alloc] init];
+//    events[3].startTime = 1.;
+//    events[3].duration = 0.2;
+//    events[3].noteNum = 60;
+//    
+//    events[4] = [[MUS147Event alloc] init];
+//    events[4].startTime = 2.;
+//    events[4].duration = 0.2;
+//    events[4].noteNum = 60;
+//    
+//    events[5] = [[MUS147Event alloc] init];
+//    events[5].startTime = 3.;
+//    events[5].duration = 0.2;
+//    events[5].noteNum = 60;
     
     numEvents = 2;
     

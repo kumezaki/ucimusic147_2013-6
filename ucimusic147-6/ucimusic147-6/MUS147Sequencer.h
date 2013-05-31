@@ -17,6 +17,7 @@
     BOOL recording;
     UInt32 numEvents;
     Float64 loopLength;
+    UInt32 noteOn[128];
 }
 
 @property (readwrite) Float64 scoreTime;
@@ -36,6 +37,9 @@
 -(void)record;
 
 -(void)allOnNotesOff;
+
+-(void)addChordEvent:(UInt32)note1 :(UInt32)note2 :(UInt32)note3 :(BOOL)on;
+
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on;
 
 -(void)countIn;

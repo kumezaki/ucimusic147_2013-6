@@ -8,13 +8,16 @@
 
 #import "MUS147Chord.h"
 #import "MUS147AQPlayer.h"
+extern MUS147AQPlayer* aqp;
+
 #import "MUS147Event_Note.h"
 
-extern MUS147AQPlayer* aqp;
+#import "MUS147Sequencer.h"
 
 @implementation MUS147Chord
 
 @synthesize numVoices;
+
 
 - (void)setAmpMax
 {
@@ -36,11 +39,13 @@ extern MUS147AQPlayer* aqp;
 
 - (void)resetSound
 {
-    for (UInt32 i = 0; i < numVoices; i++)
+    for (UInt32 i = 0; i < self.numVoices; i++)
     {
         [aqp getVoice:i].amp = 0;
         [aqp getVoice:i].freq = 0;
     }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEvent: 0 :0 :0 :NO];
 }
 
 
@@ -55,8 +60,10 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:64] * 2.;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:67];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:67] * 2.;
-    
     self.numVoices = 6;
+
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEvent:60 :64 :67 :YES];
 }
 
 

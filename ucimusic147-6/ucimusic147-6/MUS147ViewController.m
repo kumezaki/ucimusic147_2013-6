@@ -78,7 +78,7 @@ extern MUS147Chord* chrd;
 
 - (IBAction)cMajorStop:(id)sender
 {
-    [chrd resetSound];
+    [chrd cMajorStop];
 }
 
 - (IBAction)setDMinor:(id)sender

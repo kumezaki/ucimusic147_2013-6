@@ -135,6 +135,7 @@
     e.noteNum = note_num;
     [seq addEvent:e];
     noteOn[note_num] = -1.; // clear the noteOn array element
+//    NSLog(@"ld", note_num);
 }
 
 -(void)addChordEventOn:(UInt32)note1 :(UInt32)note2 :(UInt32)note3
@@ -144,6 +145,7 @@
     noteOn[note1] = scoreTime;
     noteOn[note2] = scoreTime;
     noteOn[note3] = scoreTime;
+    NSLog(@"addChordEventon");
 }
 
 -(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3

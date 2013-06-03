@@ -33,7 +33,6 @@ extern MUS147AQPlayer* aqp;
     {
         [aqp getVoice:i].amp = 1. / self.numVoices;
     }
-
 }
 
 
@@ -44,8 +43,6 @@ extern MUS147AQPlayer* aqp;
         [aqp getVoice:i].amp = 0;
         [aqp getVoice:i].freq = 0;
     }
-    if (aqp.sequencer.recording)
-        [aqp.sequencer addChordEventOff: 0 :0 :0];
 }
 
 
@@ -66,6 +63,14 @@ extern MUS147AQPlayer* aqp;
         [aqp.sequencer addChordEventOn:60 :64 :67];
 }
 
+- (void)cMajorStop
+{
+    for (UInt32 i = 0; i < self.numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+}
 
 -(void)dMinorPlay
 {

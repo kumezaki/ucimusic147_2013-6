@@ -45,7 +45,7 @@ extern MUS147AQPlayer* aqp;
         [aqp getVoice:i].freq = 0;
     }
     if (aqp.sequencer.recording)
-        [aqp.sequencer addChordEvent: 0 :0 :0 :NO];
+        [aqp.sequencer addChordEventOff: 0 :0 :0];
 }
 
 
@@ -63,7 +63,7 @@ extern MUS147AQPlayer* aqp;
     self.numVoices = 6;
 
     if (aqp.sequencer.recording)
-        [aqp.sequencer addChordEvent:60 :64 :67 :YES];
+        [aqp.sequencer addChordEventOn:60 :64 :67];
 }
 
 

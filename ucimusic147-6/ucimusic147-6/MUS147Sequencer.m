@@ -127,44 +127,30 @@
     }
 }
 
--(void)addChordEvent:(UInt32)note1 :(UInt32)note2 :(UInt32)note3 :(BOOL)on
+-(void)addChordEvent:(UInt32)note_num
+{
+    MUS147Event_Note* e = [[MUS147Event_Note alloc] init];
+    e.startTime = noteOn[note_num];
+    e.duration = scoreTime - noteOn[note_num];
+    e.noteNum = note_num;
+    [seq addEvent:e];
+    noteOn[note_num] = -1.; // clear the noteOn array element
+}
+
+-(void)addChordEventOn:(UInt32)note1 :(UInt32)note2 :(UInt32)note3
 {
     if (!recording) return;
    
-    if (seq.numEvents > 0)
-    {
-        MUS147Event* prev_e = [seq getEvent:(seq.numEvents-1)];
-        prev_e.duration = scoreTime - prev_e.startTime;
-        
-        //      NSLog(@"%f %f %f %s PREV(%f,%f)",scoreTime,x,y,on?"YES":"NO",prev_e.startTime,prev_e.duration);
-    }
     noteOn[note1] = scoreTime;
     noteOn[note2] = scoreTime;
     noteOn[note3] = scoreTime;
-    MUS147Event_Touch* e = [[MUS147Event_Touch alloc] init];
-    e.startTime = noteOn[note1];
-    e.duration = MAXFLOAT;
-    e.startTime = scoreTime;
-    e.noteNum = note1;
-    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
-    
-    [seq addEvent:e];
-    
-    e.startTime = noteOn[note1];
-    e.duration = MAXFLOAT;
-    e.startTime = scoreTime;
-    e.noteNum = note2;
-    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
-    
-    [seq addEvent:e];
-    
-    e.startTime = noteOn[note1];
-    e.duration = MAXFLOAT;
-    e.startTime = scoreTime;
-    e.noteNum = note3;
-    e.type = on ? kMUS147Event_Touch_ON : kMUS147Event_Touch_OFF;
-    
-    [seq addEvent:e];
+}
+
+-(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3
+{
+    [self addChordEvent:note1];
+    [self addChordEvent:note2];
+    [self addChordEvent:note3];
 }
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on

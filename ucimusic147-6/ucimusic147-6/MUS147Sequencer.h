@@ -38,7 +38,9 @@
 
 -(void)allOnNotesOff;
 
--(void)addChordEvent:(UInt32)note1 :(UInt32)note2 :(UInt32)note3 :(BOOL)on;
+-(void)addChordEvent:(UInt32)note_num;
+-(void)addChordEventOn:(UInt32)note1 :(UInt32)note2 :(UInt32)note3;
+-(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3;
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on;
 

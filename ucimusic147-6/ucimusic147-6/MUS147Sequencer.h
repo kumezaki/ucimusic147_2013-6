@@ -17,7 +17,7 @@
     BOOL recording;
     UInt32 numEvents;
     Float64 loopLength;
-    UInt32 noteOn[128];
+    Float64 noteOn[128];
 }
 
 @property (readwrite) Float64 scoreTime;

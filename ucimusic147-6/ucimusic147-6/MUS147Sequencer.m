@@ -38,7 +38,7 @@
 
 -(void)advanceScoreTime:(Float64)elapsed_seconds
 {
-    if (!playing) return;
+    if (!playing && !recording) return;
     
     Float64 elapsed_beats = bpm / 60. * elapsed_seconds;
     scoreTime += elapsed_beats;
@@ -65,10 +65,10 @@
                 if (!event.on)
                     [event doOn];
             }
-        if (scoreTime > loopLength)
-        {
-            scoreTime = 0.;
-        }
+//        if (scoreTime > loopLength)
+//        {
+//            scoreTime = 0.;
+//        }
     }
 }
 
@@ -109,6 +109,7 @@
         [event doOff];
     }
     playing = NO;
+    recording = NO;
 }
 
 
@@ -135,7 +136,8 @@
     e.noteNum = note_num;
     [seq addEvent:e];
     noteOn[note_num] = -1.; // clear the noteOn array element
-//    NSLog(@"ld", note_num);
+    NSLog(@"%ld %f %f %f", note_num, e.startTime, e.duration, scoreTime);
+    
 }
 
 -(void)addChordEventOn:(UInt32)note1 :(UInt32)note2 :(UInt32)note3
@@ -145,7 +147,7 @@
     noteOn[note1] = scoreTime;
     noteOn[note2] = scoreTime;
     noteOn[note3] = scoreTime;
-    NSLog(@"addChordEventon");
+    NSLog(@"addChordEventon %f", scoreTime);
 }
 
 -(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3

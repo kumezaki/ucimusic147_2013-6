@@ -70,6 +70,8 @@ extern MUS147AQPlayer* aqp;
         [aqp getVoice:i].amp = 0;
         [aqp getVoice:i].freq = 0;
     }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:60 :64 :67];
 }
 
 -(void)dMinorPlay

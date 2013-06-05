@@ -203,8 +203,12 @@ extern MUS147Chord* chrd;
 
 - (IBAction)loop1Switch:(id)sender
 {
+    
     if (!playing)
     {
+        MUS147Sequence* seq;
+        NSLog(@"%ld %f", seq.numEvents, [aqp getVoice:0].freq);
+
         [aqp.sequencer play];
         playing = YES;
     }

@@ -19,13 +19,18 @@
     
     events[0] = [[MUS147Event alloc] init];
     events[0].startTime = 0.;
-    events[0].duration = 1.;
+    events[0].duration = 0.5;
     events[0].noteNum = 60;
     
     events[1] = [[MUS147Event alloc] init];
-    events[1].startTime = 1.5;
+    events[1].startTime = 0.5;
     events[1].duration = 0.5;
-    events[1].noteNum = 65;
+    events[1].noteNum = 64;
+    
+    events[2] = [[MUS147Event alloc] init];
+    events[2].startTime = 1.;
+    events[2].duration = 0.5;
+    events[2].noteNum = 67;
    
     //count in
 //    events[2] = [[MUS147Event alloc] init];
@@ -48,7 +53,7 @@
 //    events[5].duration = 0.2;
 //    events[5].noteNum = 60;
     
-    numEvents = 2;
+    numEvents = 3;
     
     return self;
 

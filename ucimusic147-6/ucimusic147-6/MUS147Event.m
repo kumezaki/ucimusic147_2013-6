@@ -24,12 +24,14 @@ extern MUS147Chord* chrd;
 
 -(void)doOn
 {
-    chrd = [[MUS147Chord alloc]init];
-    chrd.numVoices = 1;
+//    for (UInt32 i = 0; i > seq.numEvents; i++) {
+//        voice[i] = [aqp getVoice:i];
+//        voice[i].freq = [MUS147Event_Note noteNumToFreq:noteNum];
+//        voice[i].amp = 1/seq.numEvents;
+//    }
     voice = [aqp getVoice:0];
     voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
-//    voice.amp = masterVolSlider.value/chrd.numVoices;
-    voice.amp = 1/ chrd.numVoices;
+    voice.amp = 1.;
     on = YES;
 }
 

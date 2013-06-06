@@ -14,6 +14,8 @@
 
 MUS147AQPlayer *aqp = nil;
 MUS147Chord* chrd = nil;
+MUS147Sequence* seq = nil;
+
 
 void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inAQBuffer);
 

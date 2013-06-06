@@ -10,9 +10,11 @@
 
 #import "MUS147AQPlayer.h"
 #import "MUS147Chord.h"
+#import "MUS147Sequence.h"
 
 extern MUS147AQPlayer* aqp;
 extern MUS147Chord* chrd;
+extern MUS147Sequence* seq;
 
 @interface MUS147ViewController ()
 
@@ -206,9 +208,6 @@ extern MUS147Chord* chrd;
     
     if (!playing)
     {
-        MUS147Sequence* seq;
-        NSLog(@"%ld %f", seq.numEvents, [aqp getVoice:0].freq);
-
         [aqp.sequencer play];
         playing = YES;
     }

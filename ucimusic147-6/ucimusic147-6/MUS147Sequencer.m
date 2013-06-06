@@ -103,13 +103,10 @@
 
 -(void)stop
 {
-    for (UInt32 i = 0; i < seq.numEvents; i++)
-    {
-        MUS147Event* event = [seq getEvent:i];
-        [event doOff];
-    }
     playing = NO;
     recording = NO;
+    
+    [self allOnNotesOff];
 }
 
 

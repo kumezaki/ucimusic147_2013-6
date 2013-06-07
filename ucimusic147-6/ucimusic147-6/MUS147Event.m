@@ -29,7 +29,7 @@ extern MUS147Chord* chrd;
 //        voice[i].freq = [MUS147Event_Note noteNumToFreq:noteNum];
 //        voice[i].amp = 1/seq.numEvents;
 //    }
-    voice = [aqp getVoice:0];
+    voice = [aqp getVoice:0];  // KU: this is where you're forcing all notes to play from only one voice and therefore monophonic playback only
     voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
     voice.amp = 1.;
     on = YES;

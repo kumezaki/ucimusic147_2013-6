@@ -21,31 +21,29 @@ extern MUS147AQPlayer* aqp;
 
 - (void)setAmpMax
 {
-    for (UInt32 i = 0; i < self.numVoices; i++)
+    for (UInt32 i = 0; i < numVoices; i++)
     {
-        [aqp getVoice:i].amp = 1./ self.numVoices;
+        [aqp getVoice:i].amp = 1./ numVoices;
     }
 }
 
 -(void)setAmpMasterVolSlider
 {
-    for (UInt32 i = 0; i < self.numVoices; i++)
+    for (UInt32 i = 0; i < numVoices; i++)
     {
-        [aqp getVoice:i].amp = 1. / self.numVoices;
+        [aqp getVoice:i].amp = 1. / numVoices;
     }
 }
 
 
 - (void)resetSound
 {
-    for (UInt32 i = 0; i < self.numVoices; i++)
+    for (UInt32 i = 0; i < numVoices; i++)
     {
         [aqp getVoice:i].amp = 0;
         [aqp getVoice:i].freq = 0;
     }
 }
-
-
 
 
 
@@ -57,7 +55,7 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:3].freq = [MUS147Event_Note noteNumToFreq:64] * 2.;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:67];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:67] * 2.;
-    self.numVoices = 6;
+    numVoices = 6;
 
     if (aqp.sequencer.recording)
         [aqp.sequencer addChordEventOn:60 :64 :67];
@@ -65,7 +63,7 @@ extern MUS147AQPlayer* aqp;
 
 - (void)cMajorStop
 {
-    for (UInt32 i = 0; i < self.numVoices; i++)
+    for (UInt32 i = 0; i < numVoices; i++)
     {
         [aqp getVoice:i].amp = 0;
         [aqp getVoice:i].freq = 0;
@@ -83,7 +81,22 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:69];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:69] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:62 :65 :69];
+
+}
+
+- (void)dMinorStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:62 :65 :69];
 }
 
 -(void)eMinorPlay
@@ -95,9 +108,23 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:71];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:71] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:64 :67 :71];
+
 }
 
+
+- (void)eMinorStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:64 :67 :71];
+}
 
 -(void)fMajorPlay
 {
@@ -108,9 +135,21 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:72];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:72] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:65 :69 :72];
 }
 
+- (void)fMajorStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:65 :69 :72];
+}
 
 -(void)gMajorPlay
 {
@@ -121,7 +160,21 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:74];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:74] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:67 :71 :74];
+
+}
+
+- (void)gMajorStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:67 :71 :74];
 }
 
 -(void)aMinorPlay
@@ -133,7 +186,21 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:76];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:76] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:69 :72 :76];
+
+}
+
+- (void)aMinorrStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:69 :72 :76];
 }
 
 
@@ -146,9 +213,22 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:77];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:77] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:70 :74 :77];
+
 }
 
+- (void)bFlatMajorStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:70 :74 :77];
+}
 
 -(void)bDimPlay
 {
@@ -159,7 +239,21 @@ extern MUS147AQPlayer* aqp;
     [aqp getVoice:4].freq = [MUS147Event_Note noteNumToFreq:77];
     [aqp getVoice:5].freq = [MUS147Event_Note noteNumToFreq:77] * 2.;
 
-    self.numVoices = 6;
+    numVoices = 6;
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOn:71 :74 :77];
+
+}
+
+- (void)bDimStop
+{
+    for (UInt32 i = 0; i < numVoices; i++)
+    {
+        [aqp getVoice:i].amp = 0;
+        [aqp getVoice:i].freq = 0;
+    }
+    if (aqp.sequencer.recording)
+        [aqp.sequencer addChordEventOff:71 :74 :77];
 }
 
 

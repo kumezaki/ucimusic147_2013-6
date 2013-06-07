@@ -91,7 +91,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopDMinor:(id)sender
 {
-    [chrd resetSound];
+    [chrd dMinorStop];
 }
 
 - (IBAction)setEMinor:(id)sender
@@ -102,7 +102,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopEMinor:(id)sender
 {
-    [chrd resetSound];
+    [chrd eMinorStop];
 }
 
 - (IBAction)setFMajor:(id)sender
@@ -113,7 +113,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopFMajor:(id)sender
 {
-    [chrd resetSound];
+    [chrd fMajorStop];
 }
 
 - (IBAction)setGMajor:(id)sender
@@ -124,7 +124,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopGMajor:(id)sender
 {
-    [chrd resetSound];
+    [chrd gMajorStop];
 }
 
 - (IBAction)setAMinor:(id)sender
@@ -135,7 +135,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopAMinor:(id)sender
 {
-    [chrd resetSound];
+    [chrd aMinorStop];
 }
 
 - (IBAction)setBFlatMajor:(id)sender
@@ -146,7 +146,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopBFlatMajor:(id)sender
 {
-    [chrd resetSound];
+    [chrd bFlatMajorStop];
 }
 
 - (IBAction)setBDim:(id)sender
@@ -157,7 +157,7 @@ extern MUS147Sequence* seq;
 
 - (IBAction)stopBDim:(id)sender
 {
-    [chrd resetSound];
+    [chrd bDimStop];
 }
 
 

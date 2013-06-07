@@ -24,23 +24,15 @@ extern MUS147Chord* chrd;
 
 -(void)doOn
 {
-//    for (UInt32 i = 0; i > seq.numEvents; i++) {
-//        voice[i] = [aqp getVoice:i];
-//        voice[i].freq = [MUS147Event_Note noteNumToFreq:noteNum];
-//        voice[i].amp = 1/seq.numEvents;
-//    }
-    voice = [aqp getVoice:0];
-    voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
-    voice.amp = 1.;
     on = YES;
+    if (voice == nil)
+        voice = [aqp getSynthVoice];
 }
 
 -(void)doOff
 {
-    voice.amp = 0.;
     on = NO;
     voice = nil;
-    chrd.numVoices = 0;
 }
 
 @end

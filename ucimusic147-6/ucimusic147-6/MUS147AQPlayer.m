@@ -135,7 +135,39 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 }
 -(MUS147Voice*)getSynthVoice
 {
-    return voice[2+synthVoice];
+    MUS147Voice* v = nil;
+    
+    for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+    {
+        v = voice[i];
+    }
+    
+//    switch (synthVoiceType)
+//    {
+//        case 0:
+//            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+//                if (![voice_synth_blit[i] isOn])
+//                    v = voice_synth_blit[i];
+//            break;
+//        case 1:
+//            for (UInt8 i = 0; i < kNumVoices_Synth; i++)
+//                if (![voice_synth_blitsaw[i] isOn])
+//                    v = voice_synth_blitsaw[i];
+//            break;
+//        default:
+//            break;
+//    }
+//    
+    return v;
+}
+
+-(MUS147Voice*)getSynthVoiceWithPos:(UInt8)pos
+{
+    MUS147Voice* v = nil;
+    
+    v = voice[pos];
+
+    return v;
 }
 
 -(void)reportElapsedFrames:(UInt32)num_frames

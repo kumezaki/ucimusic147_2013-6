@@ -7,14 +7,20 @@
 //
 
 #import "MUS147Event.h"
-
+enum {
+    kMUS147Event_Note_OFF = 0,
+    kMUS147Event_Note_ON
+};
 @interface MUS147Event_Note : MUS147Event {
 //    SInt16 noteNum;
     Float64 amp;
+    
 }
 
 //@property (readwrite) SInt16 noteNum;
 @property (readwrite) Float64 amp;
+@property (readwrite) UInt8 pos;
+@property (readwrite) UInt8 type;
 
 +(Float64)noteNumToFreq:(Float64)note_num;
 

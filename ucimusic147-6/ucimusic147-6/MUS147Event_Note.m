@@ -15,19 +15,25 @@ extern MUS147AQPlayer* aqp;
 
 //@synthesize noteNum;
 @synthesize amp;
+@synthesize pos;
+@synthesize type;
 
 -(void)doOn
 {
     [super doOn];
-    
-    voice.amp = 1.;
-    voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
+//    
+//    voice.amp = 1./kNumVoices;
+//    voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
+    on = YES;
+    if (voice == nil)
+        voice = [aqp getSynthVoiceWithPos:pos];
+    voice.amp = 1./kNumVoices;
+        voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
 }
 
 -(void)doOff
 {
-    voice.amp = 0.0;
-    
+    voice.amp = 0.0;    
     [super doOff];
 }
 
@@ -35,5 +41,4 @@ extern MUS147AQPlayer* aqp;
 {
     return pow(2.,((Float64)note_num-69)/12.)*440.;
 }
-
 @end

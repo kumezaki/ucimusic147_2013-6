@@ -15,20 +15,44 @@ extern MUS147AQPlayer* aqp;
 
 //@synthesize noteNum;
 @synthesize amp;
+@synthesize pos;
 
 -(void)doOn
 {
-    [super doOn];
+//    [super doOn];  // KU: no need to override super because you need to access 2 voices
     
-    voice.amp = 1.;
-    voice.freq = [MUS147Event_Note noteNumToFreq:noteNum];
+    on = YES;
+
+    MUS147Voice* v;
+    
+    v = [aqp getVoice:pos*2];
+    v.amp = 1./6.;
+    v.freq = [MUS147Event_Note noteNumToFreq:noteNum];
+    
+    NSLog(@"%d %f %f",pos,v.amp,v.freq);
+
+    v = [aqp getVoice:pos*2+1];
+    v.amp = 1./6.;
+    v.freq = [MUS147Event_Note noteNumToFreq:noteNum] * 2;
 }
 
 -(void)doOff
 {
-    voice.amp = 0.0;
+    on = NO;
     
-    [super doOff];
+    MUS147Voice* v;
+    
+    v = [aqp getVoice:pos*2];
+    v.amp = 0.;
+    
+    NSLog(@"%d %f %f",pos,v.amp,v.freq);
+
+    v = [aqp getVoice:pos*2+1];
+    v.amp = 0.;
+    
+    voice = nil;
+
+//    [super doOff];  // KU: no need to override super because you need to access 2 voices
 }
 
 +(Float64)noteNumToFreq:(Float64)note_num

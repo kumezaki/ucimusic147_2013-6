@@ -11,10 +11,12 @@
 @interface MUS147Event_Note : MUS147Event {
 //    SInt16 noteNum;
     Float64 amp;
+    UInt8   pos;
 }
 
 //@property (readwrite) SInt16 noteNum;
 @property (readwrite) Float64 amp;
+@property (readwrite) UInt8 pos;
 
 +(Float64)noteNumToFreq:(Float64)note_num;
 

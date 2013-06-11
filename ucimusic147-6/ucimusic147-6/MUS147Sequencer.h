@@ -38,7 +38,7 @@
 
 -(void)allOnNotesOff;
 
--(void)addChordEvent:(UInt32)note_num;
+-(void)addChordEvent:(UInt32)note_num :(UInt8)note_pos;
 -(void)addChordEventOn:(UInt32)note1 :(UInt32)note2 :(UInt32)note3;
 -(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3;
 

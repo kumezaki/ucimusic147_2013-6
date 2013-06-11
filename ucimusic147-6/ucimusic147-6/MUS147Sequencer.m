@@ -125,12 +125,13 @@
     }
 }
 
--(void)addChordEvent:(UInt32)note_num
+-(void)addChordEvent:(UInt32)note_num :(UInt8)note_pos
 {
     MUS147Event_Note* e = [[MUS147Event_Note alloc] init];
     e.startTime = noteOn[note_num];
     e.duration = scoreTime - noteOn[note_num];
     e.noteNum = note_num;
+    e.pos = note_pos; // KU: you'll use this get the proper voice
     [seq addEvent:e];
     noteOn[note_num] = -1.; // clear the noteOn array element
     NSLog(@"%ld %f %f %f", note_num, e.startTime, e.duration, scoreTime);
@@ -149,9 +150,9 @@
 
 -(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3
 {
-    [self addChordEvent:note1];
-    [self addChordEvent:note2];
-    [self addChordEvent:note3];
+    [self addChordEvent:note1 :0];
+    [self addChordEvent:note2 :1];
+    [self addChordEvent:note3 :2];
 }
 
 -(void)addTouchEvent:(Float64)x :(Float64)y :(BOOL)on

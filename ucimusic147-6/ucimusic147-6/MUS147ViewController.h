@@ -36,7 +36,6 @@
     
 }
 
-@property (readwrite) UInt32 midiNum;
 @property (readwrite) BOOL    playing;
 @property (readwrite) BOOL    pitchOn;
 

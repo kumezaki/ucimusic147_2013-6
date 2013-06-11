@@ -23,6 +23,8 @@ extern MUS147Sequence* seq;
 @implementation MUS147ViewController
 
 @synthesize playing;
+@synthesize pitchOn;
+
 
 - (void)viewDidLoad
 {
@@ -68,6 +70,14 @@ extern MUS147Sequence* seq;
     {
         [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
     }
+}
+
+
+//Accelerometer
+- (void)accelerometer: (UIAccelerometer *)accelerometerdidAccelerate :(UIAcceleration *)accelleration
+{
+    NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
+    
 }
 
 
@@ -215,6 +225,18 @@ extern MUS147Sequence* seq;
     {
         [aqp.sequencer stop];
         playing = NO;
+    }
+}
+
+- (IBAction)pitchSwitch:(id)sender
+{
+    if (!pitchOn)
+    {
+        
+    }
+    else
+    {
+        
     }
 }
 

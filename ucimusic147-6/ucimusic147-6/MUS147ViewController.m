@@ -30,6 +30,8 @@ extern MUS147Sequence* seq;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +78,9 @@ extern MUS147Sequence* seq;
 //Accelerometer
 - (void)accelerometer: (UIAccelerometer *)accelerometerdidAccelerate :(UIAcceleration *)accelleration
 {
-    NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
+    if (pitchOn) {
+        NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
+    }
     
 }
 
@@ -232,11 +236,11 @@ extern MUS147Sequence* seq;
 {
     if (!pitchOn)
     {
-        
+        pitchOn= YES;
     }
     else
     {
-        
+        pitchOn= NO;
     }
 }
 

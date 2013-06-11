@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MUS147Sequencer.h"
-@interface MUS147ViewController : UIViewController
+@interface MUS147ViewController : UIViewController <UIAccelerometerDelegate>
 {
 //    IBOutlet UISlider* freq0Slider;
 //    IBOutlet UISlider* amp0Slider;

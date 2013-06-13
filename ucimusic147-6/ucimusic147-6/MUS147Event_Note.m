@@ -45,7 +45,7 @@ extern MUS147AQPlayer* aqp;
     v = [aqp getVoice:pos*2];
     v.amp = 0.;
     
-    NSLog(@"%d %f %f",pos,v.amp,v.freq);
+//    NSLog(@"%d %f %f",pos,v.amp,v.freq);
 
     v = [aqp getVoice:pos*2+1];
     v.amp = 0.;

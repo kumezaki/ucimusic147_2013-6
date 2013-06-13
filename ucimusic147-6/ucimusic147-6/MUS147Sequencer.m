@@ -65,10 +65,13 @@
                 if (!event.on)
                     [event doOn];
             }
-//        if (scoreTime > loopLength)
-//        {
-//            scoreTime = 0.;
-//        }
+        if (playing){
+            if (scoreTime > loopLength)
+            {
+                scoreTime = 0.;
+            }
+        }
+
     }
 }
 
@@ -134,7 +137,7 @@
     e.pos = note_pos; // KU: you'll use this get the proper voice
     [seq addEvent:e];
     noteOn[note_num] = -1.; // clear the noteOn array element
-    NSLog(@"%ld %f %f %f", note_num, e.startTime, e.duration, scoreTime);
+//    NSLog(@"%ld %f %f %f", note_num, e.startTime, e.duration, scoreTime);
     
 }
 
@@ -145,7 +148,7 @@
     noteOn[note1] = scoreTime;
     noteOn[note2] = scoreTime;
     noteOn[note3] = scoreTime;
-    NSLog(@"addChordEventon %f", scoreTime);
+//    NSLog(@"addChordEventon %f", scoreTime);
 }
 
 -(void)addChordEventOff:(UInt32)note1 :(UInt32)note2 :(UInt32)note3

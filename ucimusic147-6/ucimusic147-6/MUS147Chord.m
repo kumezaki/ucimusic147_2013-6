@@ -192,7 +192,7 @@ extern MUS147AQPlayer* aqp;
 
 }
 
-- (void)aMinorrStop
+- (void)aMinorStop
 {
     for (UInt32 i = 0; i < numVoices; i++)
     {

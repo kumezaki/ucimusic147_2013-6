@@ -105,7 +105,7 @@
 {
     playing = NO;
     recording = NO;
-    
+    loopLength = scoreTime;
     [self allOnNotesOff];
 }
 

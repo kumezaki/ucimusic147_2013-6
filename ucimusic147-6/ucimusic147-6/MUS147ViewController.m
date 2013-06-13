@@ -23,11 +23,13 @@ extern MUS147Sequence* seq;
 @implementation MUS147ViewController
 
 @synthesize playing;
+@synthesize pitchOn;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +73,13 @@ extern MUS147Sequence* seq;
 }
 
 
+- (void)accelerometer: (UIAccelerometer *)accelerometerdidAccelerate :(UIAcceleration *)accelleration
+{
+    if (pitchOn) {
+        NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
+    }
+    
+}
 
 -(IBAction)setCMajor:(id)sender
 {
@@ -218,6 +227,17 @@ extern MUS147Sequence* seq;
     }
 }
 
+- (IBAction)pitchSwitch:(id)sender
+{
+    if (!pitchOn)
+    {
+        pitchOn= YES;
+    }
+    else
+    {
+        pitchOn= NO;
+    }
+}
 
 
 

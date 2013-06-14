@@ -14,6 +14,8 @@ extern MUS147AQPlayer* aqp;
 #import "MUS147ViewController.h"
 extern MUS147ViewController* viewcon;
 
+MUS147Event_Note* note = nil;
+
 @implementation MUS147Event_Note
 
 //@synthesize noteNum;

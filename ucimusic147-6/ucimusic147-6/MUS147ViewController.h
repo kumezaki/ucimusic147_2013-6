@@ -32,13 +32,16 @@
     MUS147Sequencer* seqer;
     BOOL    playing;
     BOOL    pitchOn;
+    
+    UInt32  pos;
 //    IBOutlet UIButton *stopButton;
     
 }
 
-@property (readwrite) UInt32 midiNum;
 @property (readwrite) BOOL    playing;
 @property (readwrite) BOOL    pitchOn;
+@property (readwrite) UInt32  pos;
+
 
 
 
@@ -59,9 +62,6 @@
 
 - (Float64)getMasterVolValue;
 - (void)setAmpMasterVolValue;
-
-
-- (void)accelerometer: (UIAccelerometer *)accelerometerdidAccelerate :(UIAcceleration *)accelleration;
 
 
 - (IBAction)setCMajor:(id)sender;
@@ -96,7 +96,7 @@
 
 //- (IBAction)seqPlay:(id)sender;
 //- (IBAction)seqStop:(id)sender;
-- (IBAction)seqRewind:(id)sender;
+//- (IBAction)seqRewind:(id)sender;
 
 - (IBAction)loop1Switch:(id)sender;
 - (IBAction)pitchSwitch:(id)sender;

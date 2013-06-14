@@ -11,10 +11,13 @@
 #import "MUS147AQPlayer.h"
 #import "MUS147Chord.h"
 #import "MUS147Sequence.h"
+#import "MUS147Event_Note.h"
+extern MUS147Event_Note* note;
 
 extern MUS147AQPlayer* aqp;
 extern MUS147Chord* chrd;
 extern MUS147Sequence* seq;
+
 
 MUS147ViewController* viewcon = nil;
 
@@ -26,11 +29,13 @@ MUS147ViewController* viewcon = nil;
 
 @synthesize playing;
 @synthesize pitchOn;
+@synthesize pos;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
@@ -82,15 +87,6 @@ MUS147ViewController* viewcon = nil;
     {
         [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
     }
-}
-
-
-- (void)accelerometer: (UIAccelerometer *)accelerometerdidAccelerate :(UIAcceleration *)accelleration
-{
-    if (pitchOn) {
-        NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
-    }
-    
 }
 
 -(IBAction)setCMajor:(id)sender
@@ -219,10 +215,10 @@ MUS147ViewController* viewcon = nil;
 //    [aqp.sequencer stop];
 //}
 
-- (IBAction)seqRewind:(id)sender
-{
-    [aqp.sequencer rewind];
-}
+//- (IBAction)seqRewind:(id)sender
+//{
+//    [aqp.sequencer rewind];
+//}
 
 - (IBAction)loop1Switch:(id)sender
 {
@@ -248,6 +244,21 @@ MUS147ViewController* viewcon = nil;
     else
     {
         pitchOn= NO;
+    }
+}
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)accelleration
+{
+    MUS147Voice* v;
+
+    if (pitchOn&&playing){
+        v = [aqp getVoice:pos*2];
+    v.amp = 1./6.;
+    v.freq = 300 *  accelleration.x;
+    v = [aqp getVoice:pos*2+1];
+    v.amp = 1./6.;
+    v.freq = 600 * 2 * accelleration.x;
+    //        NSLog(@"%f, %f, %f", accelleration.x, accelleration.y, accelleration.z);
     }
 }
 

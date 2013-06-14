@@ -57,6 +57,7 @@
 
 //UI buttons for making chord sounds
 
+- (Float64)getMasterVolValue;
 - (void)setAmpMasterVolValue;
 
 

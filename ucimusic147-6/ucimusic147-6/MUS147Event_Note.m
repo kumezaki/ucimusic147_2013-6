@@ -11,6 +11,9 @@
 #import "MUS147AQPlayer.h"
 extern MUS147AQPlayer* aqp;
 
+#import "MUS147ViewController.h"
+extern MUS147ViewController* viewcon;
+
 @implementation MUS147Event_Note
 
 //@synthesize noteNum;
@@ -29,7 +32,7 @@ extern MUS147AQPlayer* aqp;
     v.amp = 1./6.;
     v.freq = [MUS147Event_Note noteNumToFreq:noteNum];
     
-    NSLog(@"%d %f %f",pos,v.amp,v.freq);
+//    NSLog(@"%d %f %f",pos,v.amp,v.freq);
 
     v = [aqp getVoice:pos*2+1];
     v.amp = 1./6.;

@@ -103,13 +103,20 @@
     seq.numEvents = 0;
 }
 
+-(void)loopStop
+{
+    playing = NO;
+}
 
 -(void)stop
 {
-    playing = NO;
+    if (!recording) {
+        return;
+    }
     recording = NO;
     loopLength = scoreTime;
-    [self allOnNotesOff];
+    [self rewind];
+//    [self allOnNotesOff];
 }
 
 

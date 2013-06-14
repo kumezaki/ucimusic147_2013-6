@@ -31,6 +31,7 @@
 -(void)advanceScoreTime:(Float64)elapsed_seconds;
 
 -(void)play;
+-(void)loopStop;
 -(void)stop;
 -(void)rewind;
 

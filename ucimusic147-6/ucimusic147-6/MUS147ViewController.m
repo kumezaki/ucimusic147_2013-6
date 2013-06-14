@@ -16,6 +16,8 @@ extern MUS147AQPlayer* aqp;
 extern MUS147Chord* chrd;
 extern MUS147Sequence* seq;
 
+MUS147ViewController* viewcon = nil;
+
 @interface MUS147ViewController ()
 
 @end
@@ -41,9 +43,15 @@ extern MUS147Sequence* seq;
 
 - (IBAction)masterVolSlider:(id)sender
 {
-    for (UInt32 i = 0; i < chrd.numVoices; i++){
-    [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
+    if (!playing) {
+        for (UInt32 i = 0; i < chrd.numVoices; i++){
+            [aqp getVoice:i].amp = masterVolSlider.value/chrd.numVoices;
+        }
     }
+    else{
+        
+    }
+    
 
 }
 
@@ -63,6 +71,10 @@ extern MUS147Sequence* seq;
 }
 
 
+- (Float64)getMasterVolValue
+{
+    return masterVolSlider.value;
+}
 
 - (void)setAmpMasterVolValue
 {
@@ -222,7 +234,7 @@ extern MUS147Sequence* seq;
     }
     else
     {
-        [aqp.sequencer stop];
+        [aqp.sequencer loopStop];
         playing = NO;
     }
 }
